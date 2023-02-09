@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { signupSchema } from "../models/signupSchema.js";
+import { signupSchema } from "../models/usersSchema.js";
 
 export type SignUp = {
     name: string,
