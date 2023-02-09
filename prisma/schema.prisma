@@ -1,0 +1,34 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+///
+
+
+//
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+enum Role {
+ user
+ admin
+}
+
+model User {
+  id            Int          @id @default(autoincrement())
+  name          String       @db.VarChar(150)
+  email         String       @unique @db.VarChar(150)
+  password      String       
+  phone         String        
+  city          String       
+  adress        String?      @db.VarChar(250) @default("Endereço não fornecido")
+  price         Int?         @default(0)
+  active        Boolean      @default(false)
+  account_type  Role         @default(user)  
+}
+  
