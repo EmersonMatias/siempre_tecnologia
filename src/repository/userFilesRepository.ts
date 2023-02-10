@@ -12,3 +12,20 @@ export async function uploadImageDB(original_name: string, file_name: string, si
         }
     })
 }
+
+export async function findFileById(fileId: number) {
+    return await database.user_files.findUnique({
+        where: {
+            id: fileId
+        }
+    })
+}
+
+
+export async function deleteFileById(fileId: number){
+    return await database.user_files.delete({
+        where:{
+            id: fileId
+        }
+    })
+}

@@ -20,3 +20,17 @@ export async function uploadImage(req: AuthToken, res: Response) {
         res.status(error.status).send(error.message)
     }
 }   
+
+export async function deleteImage(req: AuthToken, res: Response){
+    const fileId = req.params.id
+
+    try{
+        const sucess = await awsS3Service.deleteImage(Number(fileId))
+
+        return res.send(`${sucess.original_name} excluido com sucesso`)
+        
+    } catch(error){
+        res.status(error.status).send(error.message)
+    }
+      
+}
