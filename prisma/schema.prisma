@@ -29,6 +29,21 @@ model User {
   adress        String?      @db.VarChar(250) @default("Endereço não fornecido")
   price         Int?         @default(0)
   active        Boolean      @default(false)
-  account_type  Role         @default(user)  
+  account_type  Role         @default(user)
+  files         User_files[]  
 }
+
+model User_files {
+  id              Int          @id @default(autoincrement())
+  original_name   String       @db.VarChar(150)
+  file_name       String       @unique
+  size            Int?
+  user_id         Int
+  url             String       
+  user            User         @relation(fields: [user_id], references: [id])      
+}
+
+
+
+
   

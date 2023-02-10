@@ -6,7 +6,6 @@ import { v4 as uuidv4 } from 'uuid';
 dotenv.config()
 const S3 = new S3Client({})
 
-
 export const multerConfig = {
     storage: multerS3({
         s3: S3,
@@ -14,12 +13,14 @@ export const multerConfig = {
         contentType: multerS3.AUTO_CONTENT_TYPE,
         acl: "public-read",
         key: (req, file, cb) => {
-            const fileName = `${uuidv4()}_${file.originalname}`
+            file.filename = `${uuidv4()}_${file.originalname}`
 
-            cb(null, fileName)
+            file.path = `https://siempre-tecnologia-test-bucket.s3.sa-east-1.amazonaws.com/${file.filename}`
+            cb(null, file.filename)
         }
     }),
     limits: {
-        fileSize: 5 * 1024 * 1024
+        fileSize: 50 * 1024 * 1024
     }
 }
+
