@@ -13,7 +13,7 @@ export function validateSigninData(req: Request, res: Response, next: NextFuncti
 
     const { error } = signinSchema.validate(signinData, {abortEarly: false})
 
-    if( error ) return res.send(error.details)
+    if( error ) throw res.status(400).send(error.details)
 
     next()
 }

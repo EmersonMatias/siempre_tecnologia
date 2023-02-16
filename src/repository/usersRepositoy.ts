@@ -26,3 +26,11 @@ export async function findEmailByName(email: string) {
         }
     })
 }
+
+export async function findUsers(){
+    return await database.user.findMany({
+        where:{
+            account_type: "user"
+        }
+    })
+}

@@ -17,11 +17,3 @@ async function registerUser(signupData: SignUp) {
 export const signupServices = {
     registerUser
 }
-
-/*
-
-datasource db {
-  provider = "mysql"
-  url      = "mysql://user:password@localhost:3306/database"
-}
- */

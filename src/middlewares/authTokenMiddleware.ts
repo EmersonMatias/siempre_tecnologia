@@ -2,7 +2,7 @@ import { Role } from "@prisma/client";
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken"
 
-type DataToken = {
+export type DataToken = {
     id: number;
     name: string;
     active: boolean;

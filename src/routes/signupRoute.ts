@@ -13,13 +13,6 @@ route.get("/resetdb", async (req,res)=> {
 
 }) 
 
-route.get("/users", async(req,res) => {
-    const a = await database.user.findMany()
-
-    res.send(a)
-
-})
-
 
 
 export default route

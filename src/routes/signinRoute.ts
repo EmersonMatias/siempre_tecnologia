@@ -4,6 +4,6 @@ import { validateSigninData } from "../middlewares/signinMiddlewares.js";
 
 const route = Router()
 
-route.post("/entrar", validateSigninData, connectUser)
+route.post("/signin", validateSigninData, connectUser)
 
 export default route
