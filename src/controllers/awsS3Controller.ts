@@ -34,3 +34,14 @@ export async function deleteImage(req: AuthToken, res: Response){
     }
       
 }
+
+export async function getFiles(req: AuthToken, res: Response){
+    const dataToken = req.datatoken
+
+    try{
+        const sucess = await awsS3Service.getFiles(dataToken.id)
+        return res.send(sucess)
+    }catch(error){
+        res.send(404)
+    }
+}

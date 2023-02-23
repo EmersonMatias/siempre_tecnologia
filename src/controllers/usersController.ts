@@ -15,3 +15,17 @@ export async function getUsers(req: AuthToken, res: Response){
         return res.send(error)
     }
 }
+
+export async function toggleStatusAccount(req: AuthToken, res: Response){
+        const dataUpdate: boolean = req.body.active
+        const userId: number = req.body.userId
+        const dataToken = req.datatoken
+
+    try{
+        const sucess = await usersService.toggleStatusAccount(dataUpdate, dataToken, userId)
+        return res.send(sucess.active)
+    }catch(error){
+        if(error.message) return res.status(error.status).send(error.message)
+        return res.send(error)
+    }
+}

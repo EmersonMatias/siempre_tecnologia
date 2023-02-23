@@ -29,3 +29,12 @@ export async function deleteFileById(fileId: number){
         }
     })
 }
+
+export async function getUserFiles(user_id: number){
+    console.log(user_id)
+    return await database.user_files.findMany({
+        where: {
+            user_id
+        }
+    })
+}

@@ -30,7 +30,8 @@ model User {
   price         Int?         @default(0)
   active        Boolean      @default(false)
   account_type  Role         @default(user)
-  files         User_files[]  
+  files         User_files[]
+  products      User_Products[] 
 }
 
 model User_files {
@@ -42,6 +43,19 @@ model User_files {
   url             String       
   user            User         @relation(fields: [user_id], references: [id])      
 }
+
+model User_Products {
+  id              Int          @id @default(autoincrement())
+  code            Int
+  product         String       @db.VarChar(150)
+  type            String       @db.VarChar(150)
+  price           Int
+  user_id         Int
+  user            User         @relation(fields: [user_id], references: [id])   
+}
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-import { deleteFileById, findFileById, uploadImageDB } from "../repository/userFilesRepository.js"
+import { deleteFileById, findFileById, getUserFiles, uploadImageDB } from "../repository/userFilesRepository.js"
 import aws from "aws-sdk"
 
 export async function uploadImage( file: Express.Multer.File, userId: number){
@@ -22,7 +22,14 @@ export async function deleteImage(id: number){
     return await deleteFileById(id)
 }
 
+export async function getFiles(id: number){
+    if(!id) throw {message: "user is doesn´t exist", status: 404}
+
+    return await getUserFiles(id)
+}
+
 export const awsS3Service = {
     uploadImage,
-    deleteImage
+    deleteImage,
+    getFiles
 }

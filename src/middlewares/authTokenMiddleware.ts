@@ -27,7 +27,6 @@ export function validateUserToken(req: AuthToken, res: Response, next: NextFunct
             return res.sendStatus(401)
         } 
 
-        console.log(dataToken)
         req.datatoken = dataToken
         next()
     })

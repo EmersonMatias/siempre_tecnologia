@@ -34,3 +34,15 @@ export async function findUsers(){
         }
     })
 }
+
+
+export async function upadteStatusAccount(dataUpdate: boolean, id: number){
+    return await database.user.update({
+        data:{
+            active: dataUpdate
+        },
+        where: {
+            id 
+        }
+    })
+}

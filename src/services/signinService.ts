@@ -20,7 +20,8 @@ export async function connectUser(signinData: SignIn) {
         name: emailExist.name,
         active: emailExist.active,
         account_type: emailExist.account_type,
-        token: acessToken
+        token: acessToken,
+        id: emailExist.id
     }
 
     return userData
