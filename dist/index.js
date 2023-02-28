@@ -1,11 +1,11 @@
 import express, { urlencoded } from "express";
 import cors from "cors";
-import signupRoute from "./routes/signupRoute.js";
-import signinRoute from "./routes/signinRoute.js";
-import awsS3Route from "./routes/awsS3Route.js";
-import usersRoute from "./routes/usersRoute.js";
-import productsRoute from "./routes/productsRoute.js";
-import screensRoute from "./routes/screensRoute.js";
+import signupRoute from "./src/routes/signupRoute.js";
+import signinRoute from "./src/routes/signinRoute.js";
+import awsS3Route from "./src/routes/awsS3Route.js";
+import usersRoute from "./src/routes/usersRoute.js";
+import productsRoute from "./src/routes/productsRoute.js";
+import screensRoute from "./src/routes/screensRoute.js";
 var server = express();
 server.use(express.json());
 server.use(cors());
