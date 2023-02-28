@@ -1,5 +1,5 @@
 import { Products } from "../controllers/productsController.js";
-import { DeleteAllProducts, FindManyProducts, RegisterManyProducts } from "../repository/productsRepository.js";
+import { DeleteAllProducts, FindManyProducts, GetAllProductsScreen, RegisterManyProducts, RegisterProductForScreen,GetProductScreenUnique, DeleteProductScreen} from "../repository/productsRepository.js";
 
 
 export async function RegisterProducts(products: Products[], id: number){
@@ -13,9 +13,33 @@ export async function RegisterProducts(products: Products[], id: number){
 
 export async function getAllProducts(id: number){
 
-    return FindManyProducts(id)
+    return await FindManyProducts(id)
 }
 
+export async function RegisterProductsScreen(product, screenId: number, userId: number){
+
+    if(!product) throw {message: "empty", status: 404}
+    if(!screenId) throw {message: "empty", status: 404}
+    if(!userId) throw {message: "empty", status: 404}
+
+    const productExist = await GetProductScreenUnique(product.id)
+    if(productExist){
+        console.log("excluiu")
+        return await DeleteProductScreen(productExist.id)
+    }else{  
+        console.log("inseriu")
+        return await RegisterProductForScreen(product, screenId, userId)
+    }
+
+}
+
+export async function GetProductsScreen(screenId: number, userId: number){
+    
+    if(!userId) throw {message: "empty", status: 404}
+    if(!screenId) throw {message: "empty", status: 404}
+
+    return await GetAllProductsScreen(screenId, userId)
+}
 
 
 
@@ -23,5 +47,7 @@ export async function getAllProducts(id: number){
 
 export const productsService = {
     RegisterProducts,
-    getAllProducts
+    getAllProducts,
+    RegisterProductsScreen,
+    GetProductsScreen
 }

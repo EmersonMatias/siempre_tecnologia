@@ -24,6 +24,36 @@ export async function RegisterProducts(req:AuthToken , res: Response){
 
 } 
 
+export async function RegisterProductScreen(req: AuthToken, res: Response){
+    const dataToken = req.datatoken
+    const screenIdString = req.params.id
+    const product = req.body
+    const screenId = Number(screenIdString)
+
+    try{
+        const sucess = await productsService.RegisterProductsScreen(product, screenId, dataToken.id)
+        res.send(sucess)
+    }catch(error){
+        res.send(404)
+    }
+
+}
+
+
+export async function GetProductsScreen(req: AuthToken, res: Response){
+    const dataToken = req.datatoken
+    const screenIdString = req.params.id
+    const screenId = Number(screenIdString)
+
+    try{
+        const sucess = await productsService.GetProductsScreen(screenId, dataToken.id)
+        res.send(sucess)
+    }catch(error){
+        console.log()
+    }
+
+}
+
 export async function getAllProducts(req: AuthToken, res:Response){
     const dataToken = req.datatoken
 

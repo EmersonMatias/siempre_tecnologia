@@ -21,6 +21,7 @@ server.use(usersRoute)
 server.use(productsRoute)
 server.use(screensRoute)
 
+const port = process.env.PORT || 4000
 
-server.listen(4000, () => console.log("SERVER RUNNING AT PORT 4000"))
+server.listen(port, () => console.log(`Server Running: ${port}`))
  
