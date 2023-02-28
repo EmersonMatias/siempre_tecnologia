@@ -2,11 +2,11 @@
   "name": "back-end",
   "version": "1.0.0",
   "description": "Back_End of Siempre Tecnologia",
-  "main": "index.js",
+  "main": "dist/index.js",
   "type": "module",
   "scripts": {
     "dev": "nodemon src/index.ts",
-    "start": "node dist/index.js",
+    "start": "node dist/src/index.js",
     "build": "tsc"
   },
   "author": "Emerson Matthias",
