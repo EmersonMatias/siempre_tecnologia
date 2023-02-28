@@ -8,9 +8,9 @@ const route = Router()
 
 
 
-route.get("/getfiles", validateUserToken, getFiles)
+route.get("/getfiles/:id", validateUserToken, getFiles)
 
-route.post( "/uploadfile" , validateUserToken , multer(multerConfig).single('file') , uploadImage )
+route.post( "/uploadfile/:id" , validateUserToken , multer(multerConfig).single('file') , uploadImage )
 
 route.delete( "/deletefile/:id" , validateUserToken , deleteImage )
 

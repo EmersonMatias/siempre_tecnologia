@@ -5,6 +5,7 @@ import signinRoute from "./routes/signinRoute.js"
 import awsS3Route from "./routes/awsS3Route.js"
 import usersRoute from "./routes/usersRoute.js"
 import productsRoute from "./routes/productsRoute.js"
+import screensRoute from "./routes/screensRoute.js"
 
 const server = express()
 
@@ -18,6 +19,7 @@ server.use(signinRoute)
 server.use(awsS3Route)
 server.use(usersRoute)
 server.use(productsRoute)
+server.use(screensRoute)
 
 
 server.listen(4000, () => console.log("SERVER RUNNING AT PORT 4000"))

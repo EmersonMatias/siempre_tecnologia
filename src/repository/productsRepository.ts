@@ -13,3 +13,11 @@ export async function FindManyProducts(id: number){
         }
     })
 }
+
+export async function DeleteAllProducts(id: number){
+    return await database.user_Products.deleteMany({
+        where: {
+            user_id: id
+        }
+    })
+}

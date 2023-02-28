@@ -1,14 +1,15 @@
 import { database } from "../../prisma/index.js";
 
 
-export async function uploadImageDB(original_name: string, file_name: string, size: number, url: string, user_id: number) {
+export async function uploadImageDB(original_name: string, file_name: string, size: number, url: string, user_id: number, screen_id) {
     return await database.user_files.create({
         data: {
             original_name,
             file_name,
             size,
             url,
-            user_id
+            user_id,
+            screen_id
         }
     })
 }
@@ -30,11 +31,12 @@ export async function deleteFileById(fileId: number){
     })
 }
 
-export async function getUserFiles(user_id: number){
-    console.log(user_id)
+export async function getUserFiles(user_id: number, screen_id: number){
+    console.log(screen_id)
     return await database.user_files.findMany({
         where: {
-            user_id
+            user_id,
+            screen_id
         }
     })
 }
