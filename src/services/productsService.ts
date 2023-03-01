@@ -22,7 +22,7 @@ export async function RegisterProductsScreen(product, screenId: number, userId: 
     if(!screenId) throw {message: "empty", status: 404}
     if(!userId) throw {message: "empty", status: 404}
 
-    const productExist = await GetProductScreenUnique(product.id)
+    const productExist = await GetProductScreenUnique(product.id, screenId)
     if(productExist){
         console.log("excluiu")
         return await DeleteProductScreen(productExist.id)

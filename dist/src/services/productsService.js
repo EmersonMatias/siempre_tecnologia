@@ -73,7 +73,7 @@ export function RegisterProductsScreen(product, screenId, userId) {
                         throw { message: "empty", status: 404 };
                     if (!userId)
                         throw { message: "empty", status: 404 };
-                    return [4 /*yield*/, GetProductScreenUnique(product.id)];
+                    return [4 /*yield*/, GetProductScreenUnique(product.id, screenId)];
                 case 1:
                     productExist = _a.sent();
                     if (!productExist) return [3 /*break*/, 3];

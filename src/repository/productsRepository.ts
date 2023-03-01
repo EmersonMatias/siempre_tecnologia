@@ -32,10 +32,11 @@ export async function RegisterProductForScreen(product: any, screen_id: number, 
     })
 }
 
-export async function GetProductScreenUnique(product_id: number){
+export async function GetProductScreenUnique(product_id: number, screen_id: number){
     return await database.user_screen_products.findFirst({
         where:{
             product_id
+            ,screen_id
         }
     })
 }
