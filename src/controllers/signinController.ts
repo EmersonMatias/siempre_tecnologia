@@ -7,10 +7,11 @@ export async function connectUser(req: Request, res: Response){
     
     try{
         const userData = await signinService.connectUser(signinData)
-
+     
         return res.status(200).send(userData)
     } catch(error){
-        if(error.message) return res.status(error.status).send(error.message)
+        console.log(error)
+        if(error.message) return res.status(400).send(error.message)
 
         return res.sendStatus(400)
     }

@@ -1,5 +1,6 @@
 import { Response } from "express";
 import { AuthToken } from "../middlewares/authTokenMiddleware.js";
+import { Screen } from "../repository/screensRepository.js";
 import { screenService } from "../services/screensService.js";
 
 export  async function CreateScreen(req: AuthToken, res: Response){
@@ -31,9 +32,9 @@ export async function GetScreens(req: AuthToken, res: Response){
 }
 
 export async function GetScreen(req: AuthToken, res: Response){
-    const dataToken = req.datatoken
     const screenId = req.params.id
     const numberScreenId = Number(screenId)
+
 
     try{
         const sucess = await screenService.GetScreen(numberScreenId)
@@ -42,4 +43,20 @@ export async function GetScreen(req: AuthToken, res: Response){
     }catch(error){
         res.sendStatus(404)
     }
+}
+
+export async function UpdateScreen(req:AuthToken, res: Response){
+    const screenId = req.params.id
+    const numberScreenId = Number(screenId)
+    const content = req.body.screen as Screen
+
+    console.log(screenId, content)
+
+    try{
+        const sucess = await screenService.UpdateScreen(numberScreenId, content )
+        res.send(sucess)
+    }catch(error){
+        res.sendStatus(404)
+    }
+
 }

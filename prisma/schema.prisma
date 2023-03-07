@@ -73,6 +73,13 @@ model User_screen{
   font_family             String       @default("'Roboto', sans-serif;")
   color_lines             String       @default("")
   width_table             Int          @default(78)
+  price_position          String       @default("center")
+  product_position        String       @default("center")
+  background_color_title  String       @default("")
+  font_family_title       String       @default("'Lilita One', cursive")
+  color                   String       @default("#FFFFFF")
+  color_title             String       @default("#FFFFFF")
+  banner_time             Int          @default(3000)
   user_id                 Int
   user                    User         @relation(fields: [user_id], references: [id])   
   product_user            User_screen_products[]

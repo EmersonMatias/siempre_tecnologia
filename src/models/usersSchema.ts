@@ -8,8 +8,6 @@ export const signupSchema = Joi.object({
     city: Joi.string().required().max(150),
     adress: Joi.string(),
     price: Joi.number().integer(),
-    active: Joi.boolean().required(),
-    account_type: Joi.string().valid("admin", "user").required(),
 })
 
 export const signinSchema = Joi.object({

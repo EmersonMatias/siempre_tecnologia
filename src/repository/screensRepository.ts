@@ -26,3 +26,57 @@ export async function FindScreenById(id: number){
         }
     })
 }
+
+export async function UpdateScreenById(id: number, content: Screen ){
+    return await database.user_screen.update({
+        where: {
+            id
+        },
+        data: {
+            background_url: content.background_url,
+            font_family: content.font_family,
+            font_size: content.font_size,
+            screen_name: content.screen_name,
+            show_banner: content.show_banner,
+            show_counter: content.show_counter,
+            show_productstable: content.show_productstable,
+            space_lines: content.space_lines,
+            table_lines: content.table_lines,
+            user_id: content.user_id,
+            color_lines: content.color_lines,
+            width_table: content.width_table,
+            price_position: content.price_position,
+            product_position: content.product_position,
+            background_color_title: content.background_color_title,
+            font_family_title: content.font_family_title,
+            color: content.color,
+            color_title: content.color_title,
+            banner_time: content.banner_time
+        }
+    })
+}
+
+
+
+export type Screen = {
+    background_url: string,
+    font_family: string,
+    font_size: number,
+    id: number,
+    screen_name: string,
+    show_banner: boolean,
+    show_counter: boolean,
+    show_productstable: boolean,
+    space_lines: number,
+    table_lines: number,
+    user_id: number,
+    color_lines: string,
+    width_table: number,
+    price_position: string,
+    product_position: string,
+    background_color_title: string,
+    font_family_title: string,
+    color: string,
+    color_title: string,
+    banner_time: number
+}

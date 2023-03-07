@@ -9,4 +9,6 @@ route.get("/users", validateUserToken, getUsers )
 
 route.put("/updateuser", validateUserToken, toggleStatusAccount)
 
+
+
 export default route

@@ -9,7 +9,6 @@ export type SignUp = {
     city: string,
     adress: string,
     price: number,
-    active: boolean,
     account_type: "admin" | "user"
 }
 

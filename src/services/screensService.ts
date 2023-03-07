@@ -1,4 +1,4 @@
-import { CreateNewScreen, FindScreenById, FindScreens } from "../repository/screensRepository.js"
+import { CreateNewScreen, FindScreenById, FindScreens, Screen, UpdateScreenById } from "../repository/screensRepository.js"
 
 
 export async function CreateScreen(screen_name: string, id: number, screen_type: string) {
@@ -28,11 +28,17 @@ export async function GetScreen(id: number){
     return await FindScreenById(id)
 }
 
+export async function UpdateScreen(id: number, content: Screen){
+    if (!id) throw { message: "error", status: 404 }
+    return await UpdateScreenById(id, content)
+}
+
 
 
 
 export const screenService = {
     CreateScreen,
     GetScreens,
-    GetScreen
+    GetScreen,
+    UpdateScreen
 }
