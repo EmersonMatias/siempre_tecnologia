@@ -79,3 +79,38 @@ export function FindScreenById(id) {
         });
     });
 }
+export function UpdateScreenById(id, content) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, database.user_screen.update({
+                        where: {
+                            id: id
+                        },
+                        data: {
+                            background_url: content.background_url,
+                            font_family: content.font_family,
+                            font_size: content.font_size,
+                            screen_name: content.screen_name,
+                            show_banner: content.show_banner,
+                            show_counter: content.show_counter,
+                            show_productstable: content.show_productstable,
+                            space_lines: content.space_lines,
+                            table_lines: content.table_lines,
+                            user_id: content.user_id,
+                            color_lines: content.color_lines,
+                            width_table: content.width_table,
+                            price_position: content.price_position,
+                            product_position: content.product_position,
+                            background_color_title: content.background_color_title,
+                            font_family_title: content.font_family_title,
+                            color: content.color,
+                            color_title: content.color_title,
+                            banner_time: content.banner_time
+                        }
+                    })];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+}

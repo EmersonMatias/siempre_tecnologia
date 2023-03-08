@@ -137,3 +137,57 @@ export function getAllProducts(req, res) {
         });
     });
 }
+export function RegisterPromotionalProduct(req, res) {
+    return __awaiter(this, void 0, void 0, function () {
+        var product_id, screen_id, dataToken, sucess, error_5;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    product_id = req.body.product_id;
+                    screen_id = req.body.screen_id;
+                    dataToken = req.datatoken;
+                    console.log(product_id, screen_id);
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, productsService.RegisterPromotionalProduct(Number(screen_id), product_id, dataToken.id)];
+                case 2:
+                    sucess = _a.sent();
+                    res.send(sucess);
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_5 = _a.sent();
+                    console.log(error_5);
+                    res.send(404);
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+export function getPromotionalProducts(req, res) {
+    return __awaiter(this, void 0, void 0, function () {
+        var screen_id, dataToken, sucess, error_6;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    screen_id = req.params.id;
+                    dataToken = req.datatoken;
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, productsService.getPromotionalProducts(Number(screen_id), dataToken.id)];
+                case 2:
+                    sucess = _a.sent();
+                    res.send(sucess);
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_6 = _a.sent();
+                    console.log(error_6);
+                    res.send(400);
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}

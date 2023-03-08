@@ -34,7 +34,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { CreateNewScreen, FindScreenById, FindScreens } from "../repository/screensRepository.js";
+import { CreateNewScreen, FindScreenById, FindScreens, UpdateScreenById } from "../repository/screensRepository.js";
 export function CreateScreen(screen_name, id, screen_type) {
     return __awaiter(this, void 0, void 0, function () {
         var background_url;
@@ -84,8 +84,22 @@ export function GetScreen(id) {
         });
     });
 }
+export function UpdateScreen(id, content) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (!id)
+                        throw { message: "error", status: 404 };
+                    return [4 /*yield*/, UpdateScreenById(id, content)];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+}
 export var screenService = {
     CreateScreen: CreateScreen,
     GetScreens: GetScreens,
-    GetScreen: GetScreen
+    GetScreen: GetScreen,
+    UpdateScreen: UpdateScreen
 };

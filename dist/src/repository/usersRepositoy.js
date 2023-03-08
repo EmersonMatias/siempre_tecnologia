@@ -37,11 +37,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 import { database } from "../../prisma/index.js";
 export function createNewUser(signupData) {
     return __awaiter(this, void 0, void 0, function () {
-        var name, email, password, phone, city, adress, price, active, account_type;
+        var name, email, password, phone, city, adress, price, account_type;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    name = signupData.name, email = signupData.email, password = signupData.password, phone = signupData.phone, city = signupData.city, adress = signupData.adress, price = signupData.price, active = signupData.active, account_type = signupData.account_type;
+                    name = signupData.name, email = signupData.email, password = signupData.password, phone = signupData.phone, city = signupData.city, adress = signupData.adress, price = signupData.price, account_type = signupData.account_type;
                     return [4 /*yield*/, database.user.create({
                             data: {
                                 name: name,
@@ -51,8 +51,8 @@ export function createNewUser(signupData) {
                                 city: city,
                                 adress: adress,
                                 price: price,
-                                active: active,
-                                account_type: account_type
+                                active: true,
+                                account_type: "user"
                             }
                         })];
                 case 1: return [2 /*return*/, _a.sent()];
@@ -98,6 +98,161 @@ export function upadteStatusAccount(dataUpdate, id) {
                         },
                         where: {
                             id: id
+                        }
+                    })];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+}
+export function updateUserNameById(userId, newName) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, database.user.update({
+                        data: {
+                            name: newName
+                        },
+                        where: {
+                            id: userId
+                        }
+                    })];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+}
+export function updateUserPhoneById(userId, newPhone) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, database.user.update({
+                        data: {
+                            phone: newPhone
+                        },
+                        where: {
+                            id: userId
+                        }
+                    })];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+}
+export function updateUserCityById(userId, newCity) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, database.user.update({
+                        data: {
+                            city: newCity
+                        },
+                        where: {
+                            id: userId
+                        }
+                    })];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+}
+export function updateUserAdressById(userId, newAdress) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, database.user.update({
+                        data: {
+                            adress: newAdress
+                        },
+                        where: {
+                            id: userId
+                        }
+                    })];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+}
+export function updateUserPriceById(userId, newPrice) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, database.user.update({
+                        data: {
+                            price: newPrice
+                        },
+                        where: {
+                            id: userId
+                        }
+                    })];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+}
+export function deleteUserById(userId) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, database.user["delete"]({
+                        where: {
+                            id: userId
+                        }
+                    })];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+}
+export function deleteUserFiles(userId) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, database.user_files.deleteMany({
+                        where: {
+                            user_id: userId
+                        }
+                    })];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+}
+export function deleteUserProducts(userId) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, database.user_Products.deleteMany({
+                        where: {
+                            user_id: userId
+                        }
+                    })];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+}
+export function deleteUserScreen(userId) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, database.user_screen.deleteMany({
+                        where: {
+                            user_id: userId
+                        }
+                    })];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+}
+export function deleteUserScreenProducts(userId) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, database.user_screen_products.deleteMany({
+                        where: {
+                            user_id: userId
                         }
                     })];
                 case 1: return [2 /*return*/, _a.sent()];

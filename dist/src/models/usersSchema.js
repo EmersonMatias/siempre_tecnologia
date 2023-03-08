@@ -6,9 +6,7 @@ export var signupSchema = Joi.object({
     phone: Joi.string().required(),
     city: Joi.string().required().max(150),
     adress: Joi.string(),
-    price: Joi.number().integer(),
-    active: Joi.boolean().required(),
-    account_type: Joi.string().valid("admin", "user").required()
+    price: Joi.number().integer()
 });
 export var signinSchema = Joi.object({
     email: Joi.string().required().min(5).max(150).email(),

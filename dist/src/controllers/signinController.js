@@ -51,8 +51,9 @@ export function connectUser(req, res) {
                     return [2 /*return*/, res.status(200).send(userData)];
                 case 3:
                     error_1 = _a.sent();
+                    console.log(error_1);
                     if (error_1.message)
-                        return [2 /*return*/, res.status(error_1.status).send(error_1.message)];
+                        return [2 /*return*/, res.status(400).send(error_1.message)];
                     return [2 /*return*/, res.sendStatus(400)];
                 case 4: return [2 /*return*/];
             }

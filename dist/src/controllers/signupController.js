@@ -48,6 +48,7 @@ export function registerUser(req, res) {
                     return [4 /*yield*/, signupServices.registerUser(signupData)];
                 case 2:
                     sucess = _a.sent();
+                    console.log(sucess);
                     return [2 /*return*/, res.status(201).send("Conta de ".concat(sucess.name, " criada com sucesso!"))];
                 case 3:
                     error_1 = _a.sent();

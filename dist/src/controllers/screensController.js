@@ -91,11 +91,10 @@ export function GetScreens(req, res) {
 }
 export function GetScreen(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var dataToken, screenId, numberScreenId, sucess, error_3;
+        var screenId, numberScreenId, sucess, error_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    dataToken = req.datatoken;
                     screenId = req.params.id;
                     numberScreenId = Number(screenId);
                     _a.label = 1;
@@ -108,6 +107,33 @@ export function GetScreen(req, res) {
                     return [3 /*break*/, 4];
                 case 3:
                     error_3 = _a.sent();
+                    res.sendStatus(404);
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+export function UpdateScreen(req, res) {
+    return __awaiter(this, void 0, void 0, function () {
+        var screenId, numberScreenId, content, sucess, error_4;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    screenId = req.params.id;
+                    numberScreenId = Number(screenId);
+                    content = req.body.screen;
+                    console.log(screenId, content);
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, screenService.UpdateScreen(numberScreenId, content)];
+                case 2:
+                    sucess = _a.sent();
+                    res.send(sucess);
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_4 = _a.sent();
                     res.sendStatus(404);
                     return [3 /*break*/, 4];
                 case 4: return [2 /*return*/];

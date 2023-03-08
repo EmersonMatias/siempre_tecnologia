@@ -34,7 +34,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { DeleteAllProducts, FindManyProducts, GetAllProductsScreen, RegisterManyProducts, RegisterProductForScreen, GetProductScreenUnique, DeleteProductScreen } from "../repository/productsRepository.js";
+import { DeleteAllProducts, FindManyProducts, GetAllProductsScreen, RegisterManyProducts, RegisterProductForScreen, GetProductScreenUnique, DeleteProductScreen, FindPromotionalProduct, DeletePromotionalProduct, RegisterUniquePromotionalProduct, FindAllPromotionalProducts } from "../repository/productsRepository.js";
 export function RegisterProducts(products, id) {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
@@ -103,9 +103,51 @@ export function GetProductsScreen(screenId, userId) {
         });
     });
 }
+export function RegisterPromotionalProduct(screen_id, product_id, user_id) {
+    return __awaiter(this, void 0, void 0, function () {
+        var productRegistred;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (!screen_id)
+                        throw { message: "empty", status: 404 };
+                    if (!product_id)
+                        throw { message: "empty", status: 404 };
+                    return [4 /*yield*/, FindPromotionalProduct(screen_id, product_id, user_id)];
+                case 1:
+                    productRegistred = _a.sent();
+                    if (!productRegistred) return [3 /*break*/, 3];
+                    console.log("exlcui");
+                    return [4 /*yield*/, DeletePromotionalProduct(productRegistred.id)];
+                case 2: return [2 /*return*/, _a.sent()];
+                case 3:
+                    console.log("inseriu");
+                    return [4 /*yield*/, RegisterUniquePromotionalProduct(screen_id, product_id, user_id)];
+                case 4: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+}
+export function getPromotionalProducts(screen_id, user_id) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (!screen_id)
+                        throw { message: "empty", status: 404 };
+                    if (!user_id)
+                        throw { message: "empty", status: 404 };
+                    return [4 /*yield*/, FindAllPromotionalProducts(screen_id, user_id)];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+}
 export var productsService = {
     RegisterProducts: RegisterProducts,
     getAllProducts: getAllProducts,
     RegisterProductsScreen: RegisterProductsScreen,
-    GetProductsScreen: GetProductsScreen
+    GetProductsScreen: GetProductsScreen,
+    RegisterPromotionalProduct: RegisterPromotionalProduct,
+    getPromotionalProducts: getPromotionalProducts
 };

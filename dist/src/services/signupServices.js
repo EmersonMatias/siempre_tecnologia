@@ -58,7 +58,7 @@ function registerUser(signupData) {
                     if (emailExist)
                         throw { message: "Email alredy exist", status: 409 };
                     encryptedPassword = hashSync(signupData.password, 10);
-                    newSignupData = __assign(__assign({}, signupData), { password: encryptedPassword });
+                    newSignupData = __assign(__assign({}, signupData), { password: encryptedPassword, price: signupData.price * 100, email: signupData.email.toLocaleLowerCase() });
                     return [4 /*yield*/, createNewUser(newSignupData)];
                 case 2: return [2 /*return*/, _a.sent()];
             }

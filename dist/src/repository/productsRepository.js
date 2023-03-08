@@ -138,3 +138,64 @@ export function GetAllProductsScreen(screen_id, user_id) {
         });
     });
 }
+export function RegisterUniquePromotionalProduct(screen_id, product_id, user_id) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, database.promotional_products.create({
+                        data: {
+                            product_id: product_id,
+                            user_id: user_id,
+                            screen_id: screen_id
+                        }
+                    })];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+}
+export function FindPromotionalProduct(screen_id, product_id, user_id) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, database.promotional_products.findFirst({
+                        where: {
+                            product_id: product_id,
+                            user_id: user_id,
+                            screen_id: screen_id
+                        }
+                    })];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+}
+export function DeletePromotionalProduct(id) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, database.promotional_products["delete"]({
+                        where: {
+                            id: id
+                        }
+                    })];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+}
+export function FindAllPromotionalProducts(screen_id, user_id) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, database.promotional_products.findMany({
+                        where: {
+                            user_id: user_id,
+                            screen_id: screen_id
+                        }
+                    })];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+}

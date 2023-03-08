@@ -86,3 +86,166 @@ export function toggleStatusAccount(req, res) {
         });
     });
 }
+export function updateUserName(req, res) {
+    return __awaiter(this, void 0, void 0, function () {
+        var newName, userId, dataToken, sucess, error_3;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    newName = req.body.name;
+                    userId = req.body.userId;
+                    dataToken = req.datatoken;
+                    console.log(newName, userId);
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, usersService.updateUserName(dataToken, userId, newName)];
+                case 2:
+                    sucess = _a.sent();
+                    res.send(sucess);
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_3 = _a.sent();
+                    console.log(error_3);
+                    res.sendStatus(400);
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+export function updateUserPhone(req, res) {
+    return __awaiter(this, void 0, void 0, function () {
+        var newPhone, userId, dataToken, sucess, error_4;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    newPhone = req.body.phone;
+                    userId = req.body.userId;
+                    dataToken = req.datatoken;
+                    console.log(newPhone, userId);
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, usersService.updateUserPhone(dataToken, userId, newPhone)];
+                case 2:
+                    sucess = _a.sent();
+                    res.send(sucess);
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_4 = _a.sent();
+                    console.log(error_4);
+                    res.sendStatus(400);
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+export function updateUserCity(req, res) {
+    return __awaiter(this, void 0, void 0, function () {
+        var newCity, userId, dataToken, sucess, error_5;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    newCity = req.body.city;
+                    userId = req.body.userId;
+                    dataToken = req.datatoken;
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, usersService.updateUserCity(dataToken, userId, newCity)];
+                case 2:
+                    sucess = _a.sent();
+                    res.send(sucess);
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_5 = _a.sent();
+                    console.log(error_5);
+                    res.sendStatus(400);
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+export function updateUserAdress(req, res) {
+    return __awaiter(this, void 0, void 0, function () {
+        var newAdress, userId, dataToken, sucess, error_6;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    newAdress = req.body.adress;
+                    userId = req.body.userId;
+                    dataToken = req.datatoken;
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, usersService.updateUserAdress(dataToken, userId, newAdress)];
+                case 2:
+                    sucess = _a.sent();
+                    res.send(sucess);
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_6 = _a.sent();
+                    console.log(error_6);
+                    res.sendStatus(400);
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+export function updateUserPrice(req, res) {
+    return __awaiter(this, void 0, void 0, function () {
+        var newPrice, userId, dataToken, sucess, error_7;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    newPrice = req.body.price;
+                    userId = req.body.userId;
+                    dataToken = req.datatoken;
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, usersService.updateUserPrice(dataToken, userId, newPrice)];
+                case 2:
+                    sucess = _a.sent();
+                    res.send(sucess);
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_7 = _a.sent();
+                    console.log(error_7);
+                    res.sendStatus(400);
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+export function deleteUser(req, res) {
+    return __awaiter(this, void 0, void 0, function () {
+        var userId, dataToken, sucess, error_8;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    userId = req.params.id;
+                    dataToken = req.datatoken;
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, usersService.deleteUser(dataToken, Number(userId))];
+                case 2:
+                    sucess = _a.sent();
+                    res.send(sucess);
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_8 = _a.sent();
+                    console.log(error_8);
+                    res.send(400);
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}

@@ -34,7 +34,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { findUsers, upadteStatusAccount } from "../repository/usersRepositoy.js";
+import { deleteUserById, deleteUserFiles, deleteUserProducts, deleteUserScreen, deleteUserScreenProducts, findUsers, upadteStatusAccount, updateUserAdressById, updateUserCityById, updateUserNameById, updateUserPhoneById, updateUserPriceById } from "../repository/usersRepositoy.js";
 function getUsers(dataToken) {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
@@ -65,7 +65,102 @@ function toggleStatusAccount(dataUpdate, dataToken, userId) {
         });
     });
 }
+function updateUserName(dataToken, userId, newName) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (dataToken.account_type === "user")
+                        throw { message: "User is not allowed", status: 401 };
+                    return [4 /*yield*/, updateUserNameById(userId, newName)];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+}
+function updateUserPhone(dataToken, userId, newEmail) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (dataToken.account_type === "user")
+                        throw { message: "User is not allowed", status: 401 };
+                    return [4 /*yield*/, updateUserPhoneById(userId, newEmail)];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+}
+function updateUserCity(dataToken, userId, newCity) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (dataToken.account_type === "user")
+                        throw { message: "User is not allowed", status: 401 };
+                    return [4 /*yield*/, updateUserCityById(userId, newCity)];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+}
+function updateUserAdress(dataToken, userId, newAdress) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (dataToken.account_type === "user")
+                        throw { message: "User is not allowed", status: 401 };
+                    return [4 /*yield*/, updateUserAdressById(userId, newAdress)];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+}
+function updateUserPrice(dataToken, userId, newPrice) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (dataToken.account_type === "user")
+                        throw { message: "User is not allowed", status: 401 };
+                    return [4 /*yield*/, updateUserPriceById(userId, newPrice)];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+}
+function deleteUser(dataToken, userId) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (dataToken.account_type === "user")
+                        throw { message: "User is not allowed", status: 401 };
+                    return [4 /*yield*/, deleteUserProducts(userId)];
+                case 1:
+                    _a.sent();
+                    return [4 /*yield*/, deleteUserFiles(userId)];
+                case 2:
+                    _a.sent();
+                    return [4 /*yield*/, deleteUserScreen(userId)];
+                case 3:
+                    _a.sent();
+                    return [4 /*yield*/, deleteUserScreenProducts(userId)];
+                case 4:
+                    _a.sent();
+                    return [2 /*return*/, deleteUserById(userId)];
+            }
+        });
+    });
+}
 export var usersService = {
     getUsers: getUsers,
-    toggleStatusAccount: toggleStatusAccount
+    toggleStatusAccount: toggleStatusAccount,
+    updateUserName: updateUserName,
+    updateUserPhone: updateUserPhone,
+    updateUserCity: updateUserCity,
+    updateUserAdress: updateUserAdress,
+    updateUserPrice: updateUserPrice,
+    deleteUser: deleteUser
 };
