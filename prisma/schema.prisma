@@ -34,6 +34,7 @@ model User {
   products      User_Products[]
   screen        User_screen[] 
   product_user  User_screen_products[]
+  promotional   Promotional_products[]
 }
 
 model User_files {
@@ -57,7 +58,7 @@ model User_Products {
   user_id         Int
   user            User         @relation(fields: [user_id], references: [id])   
   product_user  User_screen_products[]
-
+  promotional   Promotional_products[]
 }
 
 model User_screen{
@@ -84,9 +85,20 @@ model User_screen{
   user                    User         @relation(fields: [user_id], references: [id])   
   product_user            User_screen_products[]
   files_user              User_files[]
+  promotional   Promotional_products[]
 }
 
 model User_screen_products {
+  id                      Int                   @id @default(autoincrement())
+  product_id              Int
+  user_id                 Int
+  screen_id               Int
+  user                    User                  @relation(fields: [user_id], references: [id])   
+  products                User_Products         @relation(fields: [product_id], references: [id])   
+  screen                  User_screen           @relation(fields: [screen_id], references: [id])  
+}
+
+model Promotional_products {
   id                      Int                   @id @default(autoincrement())
   product_id              Int
   user_id                 Int

@@ -64,3 +64,38 @@ export async function getAllProducts(req: AuthToken, res:Response){
         res.send(404)
     }
 }
+
+export async function RegisterPromotionalProduct(req: AuthToken, res: Response){
+    const product_id:number = req.body.product_id
+    const screen_id: number = req.body.screen_id
+    const dataToken = req.datatoken
+
+    console.log(product_id, screen_id)
+
+    try{
+        const sucess = await productsService.RegisterPromotionalProduct(Number(screen_id), product_id, dataToken.id)
+
+        res.send(sucess)
+
+    }catch(error){
+
+        console.log(error)
+        res.send(404)
+    }
+    
+}
+
+export async function getPromotionalProducts(req: AuthToken, res: Response){
+    const screen_id = req.params.id
+    const dataToken = req.datatoken
+
+
+    try{
+        const sucess = await productsService.getPromotionalProducts(Number(screen_id), dataToken.id)
+        res.send(sucess)
+    }catch(error){
+        console.log(error)
+        res.send(400)
+
+    }
+}
