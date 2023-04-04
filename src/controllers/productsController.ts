@@ -14,11 +14,14 @@ export type Products = {
 export async function RegisterProducts(req:AuthToken , res: Response){
     const dataToken = req.datatoken
     const products = req.body as Products[]
+    const screen_id = Number(req.params.id)
 
     try{
-        const sucess = await productsService.RegisterProducts(products, dataToken.id)
+        const sucess = await productsService.RegisterProducts(products, dataToken.id, screen_id)
+        console.log(sucess)
         res.status(200).send(sucess)
     }catch(error){
+        console.log(error)
         res.sendStatus(404)
     }
 

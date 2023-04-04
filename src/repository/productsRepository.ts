@@ -22,6 +22,8 @@ export async function DeleteAllProducts(id: number){
     })
 }
 
+
+
 export async function RegisterProductForScreen(product: any, screen_id: number, user_id: number){
     return await database.user_screen_products.create({
         data:{
@@ -113,3 +115,4 @@ export async function DeleteAllPromotionalProducts(screen_id: number){
         }
     })
 }
+

@@ -1,12 +1,16 @@
 import { Products } from "../controllers/productsController.js";
-import { DeleteAllProducts, FindManyProducts, GetAllProductsScreen, RegisterManyProducts, RegisterProductForScreen,GetProductScreenUnique, DeleteProductScreen, FindPromotionalProduct, DeletePromotionalProduct, RegisterUniquePromotionalProduct, FindAllPromotionalProducts} from "../repository/productsRepository.js";
+import { DeleteAllProducts, FindManyProducts, GetAllProductsScreen, RegisterManyProducts, RegisterProductForScreen,GetProductScreenUnique, DeleteProductScreen, FindPromotionalProduct, DeletePromotionalProduct, RegisterUniquePromotionalProduct, FindAllPromotionalProducts, DeleteAllPromotionalProducts, DeleteAllScreenProducts} from "../repository/productsRepository.js";
 
 
-export async function RegisterProducts(products: Products[], id: number){
+export async function RegisterProducts(products: Products[], id: number, screen_id: number){
 
     if(products.length === 0) throw {message: "empty", status: 404}
     
+
+    await DeleteAllPromotionalProducts(screen_id)
+    await DeleteAllScreenProducts(screen_id)
     await DeleteAllProducts(id)
+ 
 
     return await RegisterManyProducts(products, id)
 }
