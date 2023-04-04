@@ -37,22 +37,25 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 import { productsService } from "../services/productsService.js";
 export function RegisterProducts(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var dataToken, products, sucess, error_1;
+        var dataToken, products, screen_id, sucess, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     dataToken = req.datatoken;
                     products = req.body;
+                    screen_id = Number(req.params.id);
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, productsService.RegisterProducts(products, dataToken.id)];
+                    return [4 /*yield*/, productsService.RegisterProducts(products, dataToken.id, screen_id)];
                 case 2:
                     sucess = _a.sent();
+                    console.log(sucess);
                     res.status(200).send(sucess);
                     return [3 /*break*/, 4];
                 case 3:
                     error_1 = _a.sent();
+                    console.log(error_1);
                     res.sendStatus(404);
                     return [3 /*break*/, 4];
                 case 4: return [2 /*return*/];

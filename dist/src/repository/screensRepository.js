@@ -111,7 +111,9 @@ export function UpdateScreenById(id, content) {
                             italic: content.italic,
                             product_time: content.product_time,
                             logo_height: content.logo_height,
-                            logo_opacity: content.logo_opacity
+                            logo_opacity: content.logo_opacity,
+                            color_promotional_line: content.color_promotional_line,
+                            color_promotional: content.color_promotional
                         }
                     })];
                 case 1: return [2 /*return*/, _a.sent()];

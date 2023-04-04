@@ -34,19 +34,25 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { DeleteAllProducts, FindManyProducts, GetAllProductsScreen, RegisterManyProducts, RegisterProductForScreen, GetProductScreenUnique, DeleteProductScreen, FindPromotionalProduct, DeletePromotionalProduct, RegisterUniquePromotionalProduct, FindAllPromotionalProducts } from "../repository/productsRepository.js";
-export function RegisterProducts(products, id) {
+import { DeleteAllProducts, FindManyProducts, GetAllProductsScreen, RegisterManyProducts, RegisterProductForScreen, GetProductScreenUnique, DeleteProductScreen, FindPromotionalProduct, DeletePromotionalProduct, RegisterUniquePromotionalProduct, FindAllPromotionalProducts, DeleteAllPromotionalProducts, DeleteAllScreenProducts } from "../repository/productsRepository.js";
+export function RegisterProducts(products, id, screen_id) {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     if (products.length === 0)
                         throw { message: "empty", status: 404 };
-                    return [4 /*yield*/, DeleteAllProducts(id)];
+                    return [4 /*yield*/, DeleteAllPromotionalProducts(screen_id)];
                 case 1:
                     _a.sent();
+                    return [4 /*yield*/, DeleteAllScreenProducts(screen_id)];
+                case 2:
+                    _a.sent();
+                    return [4 /*yield*/, DeleteAllProducts(id)];
+                case 3:
+                    _a.sent();
                     return [4 /*yield*/, RegisterManyProducts(products, id)];
-                case 2: return [2 /*return*/, _a.sent()];
+                case 4: return [2 /*return*/, _a.sent()];
             }
         });
     });
