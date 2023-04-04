@@ -72,4 +72,4 @@ export async function DeleteScreen(req: AuthToken, res: Response){
         console.log(error)
         res.sendStatus(404)
     }
-}  
+}    
