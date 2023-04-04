@@ -1,0 +1,1 @@
+export const conflictError = () => {return {message: "conflict error", status: 409}}

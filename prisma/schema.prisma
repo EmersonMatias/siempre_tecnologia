@@ -1,0 +1,133 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+///
+
+
+//
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+enum Role {
+ user
+ admin
+}
+
+model User {
+  id            Int          @id @default(autoincrement())
+  name          String       @db.VarChar(150)
+  email         String       @unique @db.VarChar(150)
+  password      String       
+  phone         String        
+  city          String       
+  adress        String?      @db.VarChar(250) @default("Endereço não fornecido")
+  price         Int?         @default(0)
+  active        Boolean      @default(false)
+  account_type  Role         @default(user)
+  files         User_files[]
+  products      User_Products[]
+  screen        User_screen[] 
+  product_user  User_screen_products[]
+  promotional   Promotional_products[]
+}
+
+model User_files {
+  id              Int          @id @default(autoincrement())
+  original_name   String       @db.VarChar(150)
+  file_name       String       @unique
+  size            Int?
+  user_id         Int
+  url             String
+  screen_id       Int       
+  user            User         @relation(fields: [user_id], references: [id])     
+  screen          User_screen  @relation(fields: [screen_id], references: [id])   
+}
+
+model User_Products {
+  id              Int          @id @default(autoincrement())
+  code            Int
+  product         String       @db.VarChar(150)
+  type            String       @db.VarChar(150)
+  price           Int
+  user_id         Int
+  user            User         @relation(fields: [user_id], references: [id])   
+  product_user  User_screen_products[]
+  promotional   Promotional_products[]
+}
+
+model User_screen{
+  id                      Int          @id @default(autoincrement())
+  screen_name             String       @db.VarChar(150)
+  background_url          String
+  show_counter            Boolean      @default(true)
+  show_productstable      Boolean      @default(true)
+  show_banner             Boolean      @default(true)
+  table_lines             Int          @default(5)
+  space_lines             Int          @default(1)
+  font_size               Int          @default(2)
+  font_family             String       @default("'Roboto', sans-serif;")
+  color_lines             String       @default("")
+  width_table             Int          @default(78)
+  price_position          String       @default("center")
+  product_position        String       @default("center")
+  background_color_title  String       @default("")
+  font_family_title       String       @default("'Lilita One', cursive")
+  color                   String       @default("#FFFFFF")
+  color_title             String       @default("#FFFFFF")
+  banner_time             Int          @default(3000)
+  bold                    Boolean      @default(false)
+  italic                  Boolean      @default(false)
+  product_time            Int          @default(3)
+  logo_height             Int          @default(50)
+  logo_opacity            Float        @default(1)
+  user_id                 Int
+  user                    User         @relation(fields: [user_id], references: [id])   
+  product_user            User_screen_products[]
+  files_user              User_files[]
+  promotional             Promotional_products[]
+  logo_screen             logo_screen[]
+}
+
+model User_screen_products {
+  id                      Int                   @id @default(autoincrement())
+  product_id              Int
+  user_id                 Int
+  screen_id               Int
+  user                    User                  @relation(fields: [user_id], references: [id])   
+  products                User_Products         @relation(fields: [product_id], references: [id])   
+  screen                  User_screen           @relation(fields: [screen_id], references: [id])  
+}
+
+model Promotional_products {
+  id                      Int                   @id @default(autoincrement())
+  product_id              Int
+  user_id                 Int
+  screen_id               Int
+  user                    User                  @relation(fields: [user_id], references: [id])   
+  products                User_Products         @relation(fields: [product_id], references: [id])   
+  screen                  User_screen           @relation(fields: [screen_id], references: [id])  
+}
+
+model logo_screen{
+  id                      Int                   @id @default(autoincrement())
+  screen_id               Int                   @unique
+  original_name           String                @db.VarChar(150)
+  file_name               String                @unique
+  size                    Int?
+  url                     String
+  screen                  User_screen           @relation(fields: [screen_id], references: [id])
+}
+
+
+
+
+
+
+
+  
