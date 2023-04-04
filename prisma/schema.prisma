@@ -86,6 +86,8 @@ model User_screen{
   product_time            Int          @default(3)
   logo_height             Int          @default(50)
   logo_opacity            Float        @default(1)
+  color_promotional_line  String       @default("")
+  color_promotional       String       @default("#FFFFFF")
   user_id                 Int
   user                    User         @relation(fields: [user_id], references: [id])   
   product_user            User_screen_products[]

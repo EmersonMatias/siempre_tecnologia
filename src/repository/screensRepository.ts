@@ -56,7 +56,9 @@ export async function UpdateScreenById(id: number, content: Screen ){
             italic: content.italic,
             product_time: content.product_time,
             logo_height: content.logo_height,
-            logo_opacity: content.logo_opacity
+            logo_opacity: content.logo_opacity,
+            color_promotional_line: content.color_promotional_line,
+            color_promotional: content.color_promotional
         }
     })
 }
@@ -68,8 +70,6 @@ export async function DeleteScreenById(id: number){
         } 
     })
 }
-
-
 
 export type Screen = {
     background_url: string,
@@ -96,5 +96,7 @@ export type Screen = {
     italic: boolean,
     product_time: number,
     logo_height: number
-    logo_opacity: number
+    logo_opacity: number,
+    color_promotional_line: string,
+    color_promotional: string
 }
